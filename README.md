@@ -38,9 +38,7 @@ where <User_A> & <User_B> are unique IDs corresponding to a user A and B (A and 
 Output format:
 UserA, UserB list userid of their mutual Friends.
 
-3. Please use in-memory join to answer this question. Load smaller file and load it to broadcast variable and send it to mapper.
-
-Given any two Users (they are friend) as input, output the list of the names and the date of birth (mm/dd/yyyy) of their mutual friends.
+3. Given any two Users (they are friend) as input, output the list of the names and the date of birth (mm/dd/yyyy) of their mutual friends.
 
 Note: use the userdata.txt to get the extra user information.
 Output format:
@@ -49,23 +47,16 @@ UserA id, UserB id, list of [names: date of birth (mm/dd/yyyy)] of their mutual 
 Sample Output:
 1234     4312       [John:12/05/1985, Jane : 10/04/1983, Ted: 08/06/1982]
 
-Q4.
-
-Using reduce-side join: Take two file and apply join.
-
+4.
 Step 1: Calculate the maximum age of the direct friends of each user.
 Step 2: Sort the users by the calculated maximum age from step 1 in descending order.
 Step 3. Output the top 10 users from step 2 with their address and the calculated maximum age.
 
 Sample output.
-  
 User A, 1000 Anderson blvd, Dallas, TX, maximum age of direct friends.
 
 
-
-
-
-Q5. Write a scala program using Apache Spark to find Top N bi-gram (https://en.wikipedia.org/wiki/N-gram) words (with its frequencies) from a document whose frequencies are above a certain number.  
+5. A scala program using Apache Spark to find Top N bi-gram (https://en.wikipedia.org/wiki/N-gram) words (with its frequencies) from a document whose frequencies are above a certain number.  
 
 For example, for the following raw text, we want to apply bi-gram analysis.
 “Alice is testing spark application. Testing spark is fun”. 
@@ -77,19 +68,15 @@ So, if we want to find top 2 frequent bi-gram tokens whose frequencies are above
 ('testing', ‘spark’)   2
 
 In this program, you have also remove the stop words (http://www.textfixer.com/resources/common-english-words.txt) and stemming (use nltk) (http://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html)
-before applying your bi-gram logic for your document. For example,
+before applying your bi-gram logic for your document. 
 
-“Testing spark is fun” will look like “test spark be fun”.
+For example, “Testing spark is fun” will look like “test spark be fun”. After stemming, your output of bi-gram will be like following:
+Document: “Alice is testing spark application. Testing spark is fun”. 
 
-After stemming, your output of bi-gram will be like following:
+After removing stop words, stemming and applying bi-gram will generate tokens like this: 
 
-Document:
-
-“Alice is testing spark application. Testing spark is fun”. 
-
-After removing stop words, stemming and applying bi-gram will generate tokens like this:  
-
- [(Alice, 'be'), ('be', 'test'), ('test', ‘spark’), (‘spark’, 'application.'), ('test', ‘spark’), (‘spark’, 'be'), (‘be’, 'fun')]. 
+[(Alice, 'be'), ('be', 'test'), ('test', ‘spark’), (‘spark’, 'application.'), ('test', ‘spark’), (‘spark’, 'be'), (‘be’, 'fun')]. 
 
 So, if we want to find top 2 frequent bi-gram tokens whose frequencies are above 1, the output will be:
+
 ('test', ‘spark’)   2
